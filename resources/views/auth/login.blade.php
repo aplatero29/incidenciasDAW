@@ -12,28 +12,28 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="usuario" class="col-md-3 col-form-label text-md-left">{{ __('Usuario') }}</label>
+                            <label for="correo" class="col-md-3 col-form-label text-md-left">{{ __('Email') }}</label>
 
                             <div class="col-md-9">
-                                <input id="usuario" type="usuario" class="form-control{{ $errors->has('usuario') ? ' is-invalid' : '' }}" name="usuario" value="{{ old('usuario') }}" required autofocus>
+                                <input id="correo" type="correo" class="form-control{{ $errors->has('correo') ? ' is-invalid' : '' }}" name="correo" value="{{ old('correo') }}" required autofocus>
 
-                                @if ($errors->has('usuario'))
+                                @if ($errors->has('correo'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('usuario') }}</strong>
+                                        <strong>{{ $errors->first('correo') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="contrasena" class="col-md-3 col-form-label text-md-left">{{ __('Contraseña') }}</label>
+                            <label for="password" class="col-md-3 col-form-label text-md-left">{{ __('Contraseña') }}</label>
 
                             <div class="col-md-9">
-                                <input id="contrasena" type="password" class="form-control{{ $errors->has('contrasena') ? ' is-invalid' : '' }}" name="contrasena" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
-                                @if ($errors->has('contrasena'))
+                                @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('contrasena') }}</strong>
+                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -47,7 +47,7 @@
                                     {{ __('Login') }}
                                 </button>
                             <div class="col-md mt-2">
-                                <p class="text-center"><a href="{{ route('register')}}">¿Ya estás registrado?</a></p>
+                                <p class="text-center"><a href="{{ route('register')}}">¿No estás registrado?</a></p>
                             </div>
 
                             </div>
