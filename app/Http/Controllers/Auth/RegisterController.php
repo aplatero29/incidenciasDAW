@@ -48,10 +48,18 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        var_dump("Hola!! :D");
+        var_dump($data);
+        \sleep(4);
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'nombre' => ['required', 'string', 'max:255'],
+            'dni' => ['required', 'string', 'max:9'],
+            'correo' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'usuario' => ['required', 'string', 'max:20'],
+            'contrasena' => ['required', 'string', 'min:6', 'confirmed'],
+            'departamento' => ['required', 'string', 'max:25']
+            //'admin' => ['required', 'number', 'max:1']
         ]);
     }
 
@@ -63,10 +71,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        var_dump("Hola!! :D");
+        var_dump($data);
+        die();
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'nombre' => $data['nombre'],
+            'dni' => $data['dni'],
+            'correo' => $data['correo'],
+            'usuario' => $data['usuario'],
+            'contrasena' => Hash::make($data['contrasena']),
+            'departamento' => $data['departamento'],
+            'admin' => '0'
         ]);
     }
 }

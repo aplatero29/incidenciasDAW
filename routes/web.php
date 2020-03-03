@@ -11,6 +11,15 @@
 |
 */
 
+
+Auth::routes();
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+Route::get('/home', function () {
+    return view('inicio',['nombre']);
+});
+
+
