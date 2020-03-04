@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class UserController extends Controller
 {
@@ -10,4 +11,12 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function listar()
+    {
+        $profesores = DB::table('profesores')->paginate(2);
+
+        return view('profesor.profesores', ['profesores' => $profesores]);
+    }
+
 }

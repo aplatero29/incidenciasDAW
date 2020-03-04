@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Auth\Type;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +19,19 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('inicio',['nombre']);
+    return view('inicio');
 });
+Route::get('logout','\App\Http\Controllers\Auth\LoginController@logout');
 
-
+/** INCIDENCIAS **/
+Route::get('/incidencias', 'IncidenciaController@listar');
+Route::post('/agregar', 'IncidenciaController@nuevoCampo');
+Route::get('/crear', 'IncidenciaController@formulario')->name('incidencia.nueva');
+Route::get('/eliminar/{id}', 'IncidenciaController@eliminar');
+/****************/
+/** PROFESORES **/
+Route::get('/usuarios', 'UserController@listar');
+/****************/
+/** LOGS **/
+Route::get('/logs', 'LogController@listar');
+/**********/

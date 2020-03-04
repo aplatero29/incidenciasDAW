@@ -10,8 +10,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-
-    public $timestamps = false;
     
     protected $table = 'profesores';
     protected $primaryKey = 'id_prof';
@@ -22,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'dni', 'correo', 'usuario', 'contrasena', 'departamento', 'admin'
+        'nombre', 'dni', 'email', 'usuario', 'password', 'departamento', 'admin'
     ];
 
     /**
@@ -31,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'contrasena', 'remember_token',
     ];
 
     /**
@@ -51,10 +49,4 @@ class User extends Authenticatable
         return $this->hasMany('App\Log');
     }
     
-    /*public function setPasswordAttribute($password)
-    {
-        var_dump($password);
-        die();
-        $this->attributes['password'] = \Hash::make($password);
-    }*/
 }

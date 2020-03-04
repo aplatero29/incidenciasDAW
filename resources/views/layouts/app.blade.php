@@ -12,15 +12,17 @@
     <body>
 
         @section('navbar')
+            @auth
             <nav class="navbar navbar-light bg-light p-2-3">
-                <a class="navbar-brand">Hola, @isset($nombre) {{$nombre}} @endisset</a>
-                <a class="navbar-item" href="index.php?accion=index">Inicio</a>
-                <a class="navbar-item" href="index.php?accion=incidenciasAdmin">Incidencias</a>
-                <a class="navbar-item" href="index.php?accion=listarUsuariosAdmin">Usuarios</a>
+                <a class="navbar-brand">Hola, {{Auth::user()->usuario}}</a>
+                <a class="navbar-item" href="/home">Inicio</a>
+                <a class="navbar-item" href="/incidencias">Incidencias</a>
+                <a class="navbar-item" href="/usuarios">Usuarios</a>
                 <a class="navbar-item" href="index.php?accion=">Mensajes</a>
-                <a class="navbar-item" href="index.php?accion=logs">Logs</a>
-                <a class="navbar-item" href="index.php?accion=logout">Cerrar sesión</a>
+                <a class="navbar-item" href="/logs">Logs</a>
+                <a class="navbar-item" href="/logout">Cerrar sesión</a>
             </nav>
+            @endauth
         @show
 
         @yield('content')
