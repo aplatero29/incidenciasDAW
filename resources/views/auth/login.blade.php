@@ -15,7 +15,7 @@
                             <label for="correo" class="col-md-3 col-form-label text-md-left">{{ __('Email') }}</label>
 
                             <div class="col-md-9">
-                                <input id="correo" type="correo" class="form-control{{ $errors->has('correo') ? ' is-invalid' : '' }}" name="correo" value="{{ old('correo') }}" required autofocus>
+                                <input id="correo" type="email" class="form-control{{ $errors->has('correo') ? ' is-invalid' : '' }}" name="correo" value="{{ old('correo') }}" required autofocus>
 
                                 @if ($errors->has('correo'))
                                     <span class="invalid-feedback" role="alert">
@@ -26,14 +26,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-3 col-form-label text-md-left">{{ __('Contraseña') }}</label>
+                            <label for="contrasena" class="col-md-3 col-form-label text-md-left">{{ __('Contraseña') }}</label>
 
                             <div class="col-md-9">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="contrasena" type="password" class="form-control{{ $errors->has('contrasena') ? ' is-invalid' : '' }}" name="contrasena" required>
 
-                                @if ($errors->has('password'))
+                                @if ($errors->has('contrasena'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>{{ $errors->first('contrasena') }}</strong>
                                     </span>
                                 @endif
                             </div>

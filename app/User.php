@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,6 +11,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public $timestamps = false;
+    
     protected $table = 'profesores';
     protected $primaryKey = 'id_prof';
 
@@ -47,4 +50,11 @@ class User extends Authenticatable
     public function logs(){
         return $this->hasMany('App\Log');
     }
+    
+    /*public function setPasswordAttribute($password)
+    {
+        var_dump($password);
+        die();
+        $this->attributes['password'] = \Hash::make($password);
+    }*/
 }
