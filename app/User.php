@@ -13,6 +13,7 @@ class User extends Authenticatable
     
     protected $table = 'profesores';
     protected $primaryKey = 'id_prof';
+    public $remember_token = false;
 
     /**
      * The attributes that are mass assignable.
@@ -29,7 +30,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'contrasena', 'remember_token',
+        'password', 'remember_token',
     ];
 
     /**
