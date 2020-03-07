@@ -28,6 +28,7 @@ Route::get('/incidencias', 'IncidenciaController@listar');
 Route::post('/agregar', 'IncidenciaController@nuevoCampo');
 Route::get('/crear', 'IncidenciaController@formulario')->name('incidencia.nueva');
 Route::get('/eliminar/{id}', 'IncidenciaController@eliminar');
+Route::get('/incidenciasPdf',);
 /****************/
 /** PROFESORES **/
 Route::get('/usuarios', 'UserController@listar');

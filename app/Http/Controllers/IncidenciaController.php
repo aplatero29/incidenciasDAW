@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use PDF;
 use Incidencia;
 
 class IncidenciaController extends Controller
