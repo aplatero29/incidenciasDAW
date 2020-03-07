@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid p-2 form-div">
     <a class="btn btn-success" href="/crear">Añadir incidencia</a>
-    <a class="btn btn-warning" href="index.php?accion=generarPDF">Generar PDF</a>
+    <a class="btn btn-warning" href="/incidenciasPdf">Generar PDF</a>
     </br></br>
     <table class="table table-striped">
       <thead>
