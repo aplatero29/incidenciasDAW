@@ -32,13 +32,14 @@ Route::get('/incidencias/pdf','IncidenciaController@pdf');
 
 /****************/
 /** PROFESORES **/
-Route::get('/usuarios/{cantidad?}', 'UserController@listar')->name('usuario.listar');
+Route::get('/usuarios', 'UserController@listar')->name('usuario.listar');
 Route::get('/usuarios/admin/{id}','UserController@hacerAdmin');
 Route::get('/usuarios/importar','UserController@formularioImportar')->name('profesores.import');
 Route::get('/usuarios/exportarexcel','UserController@export');
 Route::post('/usuarios/importarexcel', 'UserController@import');
-
+Route::get('/usuarios/detalle/{id}','UserController@detalles');
 /****************/
 /** LOGS **/
 Route::get('/logs', 'LogController@listar');
+Route::get('/logs/pdf','LogController@pdf');
 /**********/

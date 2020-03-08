@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use DB;
+use PDF;
 
 class LogController extends Controller
 {
@@ -17,5 +17,14 @@ class LogController extends Controller
         $logs = DB::table('logs')->paginate(5);
 
         return view('log.logs', ['logs' => $logs]);
+    }
+
+    public function pdf()
+    {
+        $logs = DB::table('logs')->orderBy('fecha_accion')->get();
+
+        $pdf = Pdf::loadView('log.pdf', ['logs' => $logs]);
+
+        return $pdf->stream();
     }
 }

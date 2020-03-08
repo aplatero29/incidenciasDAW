@@ -46,7 +46,9 @@
           @if($linea->admin == 0 && Auth::user()->admin == 1)
           <!-- Si el usuario mostrado no es admin y el usuario logueado si -->
           <a class="btn btn-danger" href="/usuarios/admin/{{ $linea->id_prof }}">Hacer admin</a>
+          <a class="btn btn-danger" href="/usuarios/actualizar/{{ $linea->id_prof }}">Actualizar</a>
           @endif
+          <a class="btn btn-info" href="/usuarios/detalle/{{ $linea->id_prof }}">Detalles</a>
         </td>
       </tr>
       @endforeach

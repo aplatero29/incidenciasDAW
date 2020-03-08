@@ -33,6 +33,12 @@ class UserController extends Controller
         }
     }
 
+    public function detalles($id)
+    {
+        $profesor = DB::table('profesores')->where('id_prof', '=', $id)->get();
+        return view('profesor.detalle', ['profesor' => $profesor]);
+    }
+
     public function export()
     {
         return Excel::download(new UsersExport, 'users.xlsx');

@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Listado Incidencias {{date('d/m/Y')}}</title>
+    <title>Listado Logs {{date('d/m/Y')}}</title>
 </head>
 <div class="container-fluid p-2 form-div">
     </br></br>
@@ -15,8 +15,8 @@
             </tr>
         </thead>
         <tbody>
-            @isset($incidencias)
-            @foreach($incidencias as $linea)
+            @isset($logs)
+            @foreach($logs as $linea)
             <tr>
                 <td>{{$linea->id_prof}}</td>
                 <td>{{$linea->usuario}}</td>
