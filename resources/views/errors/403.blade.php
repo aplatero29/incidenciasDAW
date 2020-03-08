@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <h1 class="display-1 text-center align-middle">404</h1>
+                <h1 class="display-1 text-center align-middle">403</h1>
             </div>
         </div>
     </div>

@@ -7,6 +7,11 @@ use DB;
 
 class LogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function listar()
     {
         $logs = DB::table('logs')->paginate(5);

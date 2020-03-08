@@ -25,13 +25,19 @@ Route::get('logout','\App\Http\Controllers\Auth\LoginController@logout');
 
 /** INCIDENCIAS **/
 Route::get('/incidencias', 'IncidenciaController@listar');
-Route::post('/agregar', 'IncidenciaController@nuevoCampo');
-Route::get('/crear', 'IncidenciaController@formulario')->name('incidencia.nueva');
-Route::get('/eliminar/{id}', 'IncidenciaController@eliminar');
-Route::get('/incidenciasPdf',);
+Route::post('/incidencias/agregar', 'IncidenciaController@nuevoCampo');
+Route::get('/incidencias/crear', 'IncidenciaController@formulario')->name('incidencia.nueva');
+Route::get('/incidencias/eliminar/{id}', 'IncidenciaController@eliminar');
+Route::get('/incidencias/pdf','IncidenciaController@pdf');
+
 /****************/
 /** PROFESORES **/
-Route::get('/usuarios', 'UserController@listar');
+Route::get('/usuarios/{cantidad?}', 'UserController@listar')->name('usuario.listar');
+Route::get('/usuarios/admin/{id}','UserController@hacerAdmin');
+Route::get('/usuarios/importar','UserController@formularioImportar')->name('profesores.import');
+Route::get('/usuarios/exportarexcel','UserController@export');
+Route::post('/usuarios/importarexcel', 'UserController@import');
+
 /****************/
 /** LOGS **/
 Route::get('/logs', 'LogController@listar');
