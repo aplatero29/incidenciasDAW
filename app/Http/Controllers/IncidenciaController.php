@@ -5,13 +5,9 @@ namespace App\Http\Controllers;
 use App;
 use Auth;
 use DB;
-use Illuminate\Http\Request;
-use App\Incidencia;
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\FromView;
-use PDF;
 use Excel;
+use Illuminate\Http\Request;
+use PDF;
 
 class IncidenciaController extends Controller
 {
@@ -22,9 +18,20 @@ class IncidenciaController extends Controller
 
     public function listar()
     {
-        $incidencias = DB::table('incidencias')->paginate(5);
+        $incidencias = '';
+        if (Auth::user()->admin == 0) {
+            $incidencias = DB::table('incidencias')->where('id_prof', Auth::user()->id_prof)->paginate(5);
+        } else {
+            $incidencias = DB::table('incidencias')->paginate(5);
+        }
 
         return view('incidencia.incidencias', ['incidencias' => $incidencias]);
+    }
+
+    public function detalles($id)
+    {
+        $incidencia = DB::table('incidencias')->where('id_inci', '=', $id)->get();
+        return view('incidencia.detalle', ['incidencia' => $incidencia]);
     }
 
     public function nuevoCampo(Request $request)
@@ -34,8 +41,10 @@ class IncidenciaController extends Controller
             ['id_prof' => Auth::user()->id_prof, 'asunto' => $request->asunto,
                 'cuerpo' => $request->cuerpo, 'fecha_creacion' => $fecha]
         );
-        
-        $this->listar();
+
+        return redirect()
+            ->route('incidencia.listar')
+            ->with(['mensaje' => 'Incidencia añadida correctamente']);
     }
 
     public function formulario()
@@ -46,13 +55,17 @@ class IncidenciaController extends Controller
     public function eliminar($id)
     {
         DB::table('incidencias')->where('id_inci', '=', $id)->delete();
-        $this->listar();
+
+        return redirect()
+            ->route('incidencia.listar')
+            ->with(['mensaje' => 'Incidencia eliminada correctamente']);
+
     }
 
     public function pdf()
     {
         $incidencias = DB::table('incidencias')->orderBy('id_inci')->get();
-        
+
         $pdf = Pdf::loadView('incidencia.pdf', ['incidencias' => $incidencias]);
 
         return $pdf->stream();
@@ -61,10 +74,10 @@ class IncidenciaController extends Controller
     public function exportarExcel()
     {
         $incidencias = DB::table('incidencias')->get();
-        
+
         $export = view('incidencia.pdf', ['incidencias' => $incidencias]);
-        
+
         return Excel::download($export, 'incidencias.xlsx');
-        
+
     }
 }

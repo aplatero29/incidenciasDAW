@@ -14,7 +14,6 @@ class User extends Authenticatable
     
     protected $table = 'profesores';
     protected $primaryKey = 'id_prof';
-    public $remember_token = false;
 
     /**
      * The attributes that are mass assignable.
@@ -51,4 +50,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Log');
     }
     
+    public function mensajes(){
+        return $this->hasMany('App\Mensaje');
+    }
 }

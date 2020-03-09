@@ -2,10 +2,14 @@
 
 @section('content')
 <div class="container-fluid p-2 form-div">
-  <input class="form-control" type="number" name="cantidad">
   <a class="btn btn-success" href="/incidencias/crear">Añadir incidencia</a>
   <a class="btn btn-warning" href="/incidencias/pdf">Generar PDF</a>
-  </br></br>
+  <br><br>
+  @if(session('mensaje'))
+  <div class="alert alert-success" role="alert">
+    {{  session('mensaje') }}
+  </div>
+  @endif
   <table class="table table-striped">
     <thead>
       <tr>
@@ -14,9 +18,7 @@
         <th>Asunto</th>
         <th>Cuerpo</th>
         <th>Fecha Creación</th>
-        @if (Auth::user()->admin == 1)
         <th>Acciones</th>
-        @endif
       </tr>
     </thead>
     <tbody>
@@ -28,7 +30,10 @@
         <td>{{$linea->asunto}}</td>
         <td>{{$linea->cuerpo}}</td>
         <td>{{$linea->fecha_creacion}}</td>
-        <td><a class="btn btn-danger" href="incidencias/eliminar/{{ $linea->id_inci }}">Eliminar</a></td>
+        <td>
+          <a class="btn btn-danger" onclick="return confirm('¿Deseas eliminar el mensaje?')" href="incidencias/eliminar/{{ $linea->id_inci }}">Eliminar</a>
+          <a class="btn btn-info" href="/incidencias/detalle/{{ $linea->id_inci }}">Detalles</a>
+        </td>
       </tr>
       @endforeach
       @endisset

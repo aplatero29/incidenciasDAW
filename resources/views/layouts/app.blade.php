@@ -16,7 +16,7 @@
         <a class="navbar-item" href="/home">Inicio</a>
         <a class="navbar-item" href="/incidencias">Incidencias</a>
         <a class="navbar-item" href="/usuarios">Usuarios</a>
-        <a class="navbar-item" href="index.php?accion=">Mensajes</a>
+        <a class="navbar-item" href="/mensajes">Mensajes</a>
         <a class="navbar-item" href="/logs">Logs</a>
         <a class="navbar-item" href="/logout">Cerrar sesión</a>
     </nav>

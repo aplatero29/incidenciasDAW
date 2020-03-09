@@ -7,10 +7,9 @@
             <form action="{{ action('UserController@import') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    {{-- <input type="file" name="excel" accept=".xlsx" class="form-control-file" /> --}}
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" name="excel" accept=".xlsx" title="Buscar" id="inputArchivo" />
-                      <label class="custom-file-label" id="labelArchivo">Agregar archivo...</label>
+                        <input type="file" class="custom-file-input" name="excel" accept=".xlsx" />
+                        <label class="custom-file-label" id="labelArchivo">Agregar archivo...</label>
                     </div>
                 </div>
                 <div class="form-group">
